@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+	<title>Объект window. Таймеры</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<style type="text/css">
+		a { color: blue }
+		#demoLinks a { display: block }
+	</style>
+	
+	<script type="text/javascript">
+	var timer;
+	
+	function updateClock()
+	{
+		var now = new Date();
+		var c = document.getElementById('clock');
+		if (c)
+			c.innerHTML = now.toLocaleTimeString();
+		else
+			stopClock();
+	}
+	
+	function startClock()
+	{
+		if (!timer)
+		{
+			timer = setInterval(updateClock, 1000)
+		}
+	}
+	
+	function stopClock()
+	{
+		if (timer)
+			clearInterval(timer)
+		timer = null;
+	}
+										
+	</script>
+
+</head>
+
+<body>
+	<h1>Объект window. Таймеры</h1>
+	<h2 id="clock">Часики</h2>
+	<div id="demoLinks">
+		 <a href="javascript:startClock()">Запустить часики</a>
+		 <a href="javascript:stopClock()">Остановить часики</a>
+
+	</div>
+</body>
+</html>

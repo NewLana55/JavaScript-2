@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+      
+        function onFileRead(){
+            var div = document.getElementById("result");
+            div.innerHTML += this.result+'<br>';
+        }
+        function readTextFile()
+        {
+            var f = document.getElementById("textFile");
+            var div = document.getElementById("result");
+            div.textContent = '';
+            for(let i=0; i < f.files.length; i++) {
+                let reader = new FileReader();
+                reader.onload = onFileRead;
+                reader.readAsText(f.files[i]);
+            }
+            
+            
+        }
+
+        
+ 
+    </script>
+    <style>
+        span {
+            background:yellow;
+        
+        }
+
+    </style>
+</head>
+<body>
+
+    <input type="file" id="textFile" onchange="readTextFile()" multiple>
+    
+    <div id="result">
+
+    </div>
+</body>
+</html>
